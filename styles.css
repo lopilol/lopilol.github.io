@@ -14,3 +14,23 @@ a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #6396b0;o
 @media(max-width:920px){.anniversary-card{grid-template-columns:1fr}.anniversary-card .cover-wrap{min-height:0;height:auto;aspect-ratio:1280/1142}.anniversary-card .cover-wrap img{object-fit:cover}.shell{width:min(100% - 42px,1200px)}.hero-inner{min-height:470px}.release-content{padding:24px}.card-bottom{align-items:stretch;flex-direction:column}.release-facts{width:100%}.card-link{align-self:flex-start}.about-inner{gap:3rem}}
 @media(max-width:680px){.shell{width:min(100% - 32px,1200px)}.header-inner{height:73px}.brand-name{font-size:.64rem}.main-nav{gap:.95rem;font-size:.76rem}.main-nav a:nth-child(2){display:none}.hero-inner{padding-block:78px 58px;min-height:480px}.hero h1{font-size:clamp(3.2rem,12vw,5rem);line-height:1.02;margin:28px 0 31px}.hero-bottom{align-items:flex-start;flex-direction:column;gap:25px}.hero-bottom p{font-size:1.12rem}.projects-section{padding-block:66px 80px}.section-heading{align-items:flex-start;flex-direction:column;gap:12px}.section-note{max-width:470px}.release-card,.anniversary-card{grid-template-columns:1fr}.cover-wrap{min-height:0;height:250px}.anniversary-card .cover-wrap{height:auto;aspect-ratio:1280/1142}.cover-wrap img{object-position:center 43%}.release-content{padding:24px 22px 25px;min-height:0}.card-topline{align-items:flex-start;flex-direction:column;gap:10px}.card-main{padding-top:25px}.release-card h3{font-size:clamp(2.8rem,9vw,4.2rem)}.release-description{font-size:1.05rem}.card-bottom{margin-top:27px}.about-inner{grid-template-columns:1fr;gap:15px;padding-block:67px}.about-copy{padding-top:0;font-size:1.05rem}.footer-inner{padding-block:25px;min-height:0;align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card-link{transition:none}}
+
+
+/* Identidade visual LopiLol */
+:root{--ink:#21182d;--ink-soft:#493c50;--paper:#faf6f8;--card:#fffafb;--line:#e8dce5;--blue:#ff7189}
+a:focus-visible{outline-color:#ff7189}
+.brand-mark{border-color:#ff8da2}
+.hero{background:radial-gradient(circle at 79% 47%,#362044 0%,var(--ink) 43%);color:#fff8fa}
+.hero h1{max-width:920px}
+.hero h1 em{color:#ffb2c3}
+.hero-eyebrow{color:#ff9eb2}
+.hero-link{border-color:#ff7b94}
+.hero-link:hover{color:#ffb2c3}
+.hero-spiral{position:absolute;right:2%;top:89px;width:min(34vw,410px);height:auto;stroke:#ff6b84;stroke-width:27;stroke-linecap:round;stroke-linejoin:round;opacity:.78;filter:drop-shadow(0 0 26px rgba(255,87,126,.16));pointer-events:none}
+.status{color:#7c294e;border-color:#e8b4c4;background:#fff0f4}
+.status-steam{color:#5d3471;border-color:#d5bce3;background:#f8f0fc}
+.edition{color:#75436a}
+.card-link:hover{background:#593158}
+.about-section{background:#f0e9f0;border-color:#e6dce7}
+@media(max-width:920px){.hero-spiral{right:-95px;top:100px;width:330px;opacity:.33}}
+@media(max-width:680px){.hero-spiral{right:-76px;top:155px;width:245px;opacity:.2}}
