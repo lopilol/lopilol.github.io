@@ -34,3 +34,13 @@ a:focus-visible{outline-color:#ff7189}
 .about-section{background:#f0e9f0;border-color:#e6dce7}
 @media(max-width:920px){.hero-spiral{right:-95px;top:100px;width:330px;opacity:.33}}
 @media(max-width:680px){.hero-spiral{right:-76px;top:155px;width:245px;opacity:.2}}
+
+
+/* Tipografia e composição editorial */
+:root{--serif:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif}
+.hero-eyebrow{display:block;letter-spacing:.19em}
+.hero-logo{position:absolute;right:2%;top:89px;width:min(34vw,410px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;transform:rotate(-7deg);box-shadow:0 20px 85px rgba(12,4,26,.18);pointer-events:none}
+.hero{background:radial-gradient(circle 270px at 79% 57%,#26024a 0%,#26024a 68%,#21182d 100%)}
+.release-card:last-of-type{margin-left:28px}
+@media(max-width:920px){.hero-logo{right:-95px;top:100px;width:330px;opacity:.5}.release-card:last-of-type{margin-left:0}}
+@media(max-width:680px){.hero-logo{right:-76px;top:155px;width:245px;opacity:.28}}
