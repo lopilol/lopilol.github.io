@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lopilol.github.io/sitemap.xml
