@@ -1,0 +1,21 @@
+.game-intro { background: var(--ink); color: #fff8fa; }
+.game-intro-inner { display: grid; grid-template-columns: 1.25fr .8fr; gap: 4rem; align-items: center; padding-block: 75px; }
+.game-label { margin: 0 0 20px; color: #ffb5c3; font-size: .85rem; font-weight: 700; }
+.game-intro h1 { margin: 0; font: 400 clamp(3.8rem, 8vw, 7.4rem)/.99 var(--serif); letter-spacing: -.055em; }
+.game-intro h1 span { color: #ff9aae; font-style: italic; }
+.game-alias { margin: 20px 0 0; font-size: 1.05rem; }
+.game-summary { max-width: 650px; margin: 24px 0 0; color: #e6d9e6; font: 1.22rem/1.58 var(--serif); }
+.game-cover { width: 100%; aspect-ratio: 1280 / 1142; object-fit: cover; }
+.game-details { display: grid; grid-template-columns: 1fr 1fr; column-gap: 7%; padding-block: 65px 95px; }
+.game-details section { border-top: 1px solid var(--line); padding-block: 25px 30px; }
+.game-details h2 { margin: 0 0 16px; font: 400 clamp(2rem, 3vw, 3rem)/1.1 var(--serif); }
+.game-details p, .game-details li { max-width: 650px; color: #493f4c; font: 1.08rem/1.62 var(--serif); }
+.game-details li { padding-left: .25rem; margin-bottom: .45rem; }
+.game-details a { color: #713257; text-decoration: underline; text-underline-offset: 3px; }
+.game-details code { font: .87em/1.2 Consolas, monospace; }
+@media (max-width: 760px) {
+  .game-intro-inner, .game-details { grid-template-columns: 1fr; }
+  .game-intro-inner { gap: 35px; padding-block: 55px; }
+  .game-cover { max-width: 520px; }
+  .game-details { padding-block: 38px 75px; }
+}
