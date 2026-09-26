@@ -45,6 +45,10 @@
       <label>Como reproduzir? (opcional)
         <textarea name="steps" maxlength="1500" placeholder="Ex.: abrir o capítulo e selecionar a primeira opção."></textarea>
       </label>
+      <label>Prints (opcional)
+        <input type="file" name="screenshots" accept="image/png,image/jpeg,image/webp" multiple>
+        <span>Até 3 imagens, com até 2 MB cada. PNG, JPG ou WebP.</span>
+      </label>
       <div class="cf-turnstile" data-sitekey="0x4AAAAAAFD8oJugiIIcg53-" data-action="report"></div>
       <button type="submit">Enviar relato</button>
       <p id="status" role="status" aria-live="polite"></p>
@@ -58,6 +62,11 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const data = new FormData(form);
+      const files = [...form.elements.screenshots.files];
+      if (files.length > 3 || files.some((file) => file.size > 2097152 || !["image/png", "image/jpeg", "image/webp"].includes(file.type))) {
+        status.textContent = "Envie até 3 prints PNG, JPG ou WebP, com até 2 MB cada.";
+        return;
+      }
       const token = data.get("cf-turnstile-response");
       if (!token) {
         status.textContent = "Conclua a verificação antes de enviar.";
@@ -66,10 +75,17 @@
       button.disabled = true;
       status.textContent = "Enviando...";
       try {
+        const screenshots = await Promise.all(files.map((file) => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve({ content: reader.result.split(",")[1] });
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        })));
         const result = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            screenshots,
             work: data.get("work"),
             edition: data.get("edition"),
             chapter: data.get("chapter"),
