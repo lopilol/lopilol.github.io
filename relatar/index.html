@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Relatar um erro | Lopilol Traduções</title>
+  <style>
+    :root { color-scheme: light; font-family: Georgia, serif; color: #24182d; background: #faf5f5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 720px; margin: 4rem auto; padding: 0 1.5rem 4rem; }
+    a { color: #702f68; }
+    h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; margin: 2rem 0 1rem; }
+    p { line-height: 1.55; }
+    form { display: grid; gap: 1.2rem; margin-top: 2rem; }
+    label { display: grid; gap: .45rem; font: 600 1rem system-ui, sans-serif; }
+    input, select, textarea { width: 100%; border: 1px solid #a992a6; border-radius: 3px; padding: .8rem; font: 1rem system-ui, sans-serif; background: white; color: #24182d; }
+    textarea { min-height: 8rem; resize: vertical; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #ff7189; outline-offset: 2px; }
+    button { width: fit-content; border: 0; padding: .85rem 1.3rem; background: #ff7189; color: #24182d; font: 700 1rem system-ui, sans-serif; cursor: pointer; }
+    button:disabled { opacity: .5; cursor: wait; }
+    #status { min-height: 1.5rem; font: 1rem system-ui, sans-serif; }
+  </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <main>
+    <a href="/subahibi/">Voltar ao patch de Subahibi</a>
+    <h1>Encontrou um erro no patch?</h1>
+    <p>Conte onde aconteceu e o que apareceu na tela. O relato vai para nossa lista privada de correções no GitHub. Não envie dados pessoais, arquivos do jogo ou saves.</p>
+    <form id="report-form">
+      <label>Edição
+        <select name="edition" required>
+          <option value="">Selecione</option>
+          <option value="15th Anniversary">15th Anniversary</option>
+          <option value="Steam">Steam</option>
+        </select>
+      </label>
+      <label>Capítulo ou local
+        <input name="chapter" maxlength="100" required placeholder="Ex.: capítulo 3, escolha após a cena da escola">
+      </label>
+      <label>O que está errado?
+        <textarea name="description" maxlength="3000" required placeholder="Escreva a frase como aparece e o que você esperava ver."></textarea>
+      </label>
+      <label>Como reproduzir? (opcional)
+        <textarea name="steps" maxlength="1500" placeholder="Ex.: abrir o capítulo e selecionar a primeira opção."></textarea>
+      </label>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFD8oJugiIIcg53-" data-action="report"></div>
+      <button type="submit">Enviar relato</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script>
+    const endpoint = "https://lopilol-private-reports.padapeis3mil.workers.dev";
+    const form = document.querySelector("#report-form");
+    const status = document.querySelector("#status");
+    const button = form.querySelector("button");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const token = data.get("cf-turnstile-response");
+      if (!token) {
+        status.textContent = "Conclua a verificação antes de enviar.";
+        return;
+      }
+      button.disabled = true;
+      status.textContent = "Enviando...";
+      try {
+        const result = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            edition: data.get("edition"),
+            chapter: data.get("chapter"),
+            description: data.get("description"),
+            steps: data.get("steps"),
+            turnstileToken: token,
+          }),
+        });
+        const answer = await result.json();
+        status.textContent = answer.message || "Não foi possível enviar. Tente novamente.";
+        if (result.ok) form.reset();
+      } catch {
+        status.textContent = "Não foi possível conectar. Tente novamente mais tarde.";
+      } finally {
+        window.turnstile?.reset();
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
+
