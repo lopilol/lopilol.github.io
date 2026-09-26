@@ -26,16 +26,14 @@
 </head>
 <body>
   <main>
-    <a href="/subahibi/">Voltar ao patch de Subahibi</a>
     <h1>Encontrou um erro no patch?</h1>
-    <p>Conte onde aconteceu e o que apareceu na tela. O relato vai para nossa lista privada de correções no GitHub. Não envie dados pessoais, arquivos do jogo ou saves.</p>
+    <p>Conte onde aconteceu e o que apareceu na tela. O relato vai para nossa lista privada de correções no GitHub.</p>
     <form id="report-form">
+      <label>Obra / visual novel
+        <input name="work" maxlength="120" required placeholder="Ex.: Subahibi, Chaos;Head">
+      </label>
       <label>Edição
-        <select name="edition" required>
-          <option value="">Selecione</option>
-          <option value="15th Anniversary">15th Anniversary</option>
-          <option value="Steam">Steam</option>
-        </select>
+        <input name="edition" maxlength="100" required placeholder="Ex.: Steam, 15th Anniversary">
       </label>
       <label>Capítulo ou local
         <input name="chapter" maxlength="100" required placeholder="Ex.: capítulo 3, escolha após a cena da escola">
@@ -71,6 +69,7 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            work: data.get("work"),
             edition: data.get("edition"),
             chapter: data.get("chapter"),
             description: data.get("description"),
