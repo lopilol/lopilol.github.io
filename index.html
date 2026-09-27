@@ -23,7 +23,8 @@
   <meta name="twitter:image" content="https://lopilol.github.io/lopilol-preview.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Lopilol Traduções","alternateName":"Lopilol","url":"https://lopilol.github.io/"}</script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <script src="projects-search.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#projetos">Pular para os projetos</a>
@@ -58,8 +59,14 @@
 
     <section class="projects-section shell" id="projetos" aria-labelledby="projects-title">
       <div class="section-heading"><h2 id="projects-title">Projetos</h2></div>
+      <div class="project-search">
+        <label for="project-search-input">Buscar visual novel</label>
+        <input id="project-search-input" type="search" placeholder="Nome da VN ou edição" autocomplete="off" aria-controls="project-results">
+      </div>
+      <p id="project-search-feedback" class="project-search-feedback" role="status" aria-live="polite" hidden></p>
+      <div id="project-results">
 
-      <article class="release-card anniversary-card" aria-labelledby="anniversary-title">
+      <article class="release-card anniversary-card" aria-labelledby="anniversary-title" data-search="subahibi subarashiki hibi wonderful everyday 15th anniversary aniversario edição japonesa">
         <div class="cover-wrap">
           <img src="subahibi15.jpg" alt="Arte de Subarashiki Hibi 15th Anniversary Edition: uma pianista diante de um céu refletido" width="1280" height="1142" loading="eager">
         </div>
@@ -82,7 +89,7 @@
         </div>
       </article>
 
-      <article class="release-card" aria-labelledby="steam-title">
+      <article class="release-card" aria-labelledby="steam-title" data-search="wonderful everyday subahibi subarashiki hibi steam full content patch">
         <div class="cover-wrap">
           <img src="wonderful.jpg" alt="Arte de Wonderful Everyday: personagem e logotipo da edição Steam" width="1000" height="1413" loading="lazy">
         </div>
@@ -103,6 +110,7 @@
           </div>
         </div>
       </article>
+      </div>
     </section>
 
     <section class="status-section shell" id="estado" aria-labelledby="status-title">
