@@ -6,27 +6,12 @@
   <meta name="robots" content="noindex">
   <title>Relatar um erro | Lopilol Traduções</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
-  <style>
-    :root { color-scheme: light; font-family: Georgia, serif; color: #24182d; background: #faf5f5; }
-    * { box-sizing: border-box; }
-    body { margin: 0; }
-    main { max-width: 720px; margin: 4rem auto; padding: 0 1.5rem 4rem; }
-    a { color: #702f68; }
-    h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; margin: 2rem 0 1rem; }
-    p { line-height: 1.55; }
-    form { display: grid; gap: 1.2rem; margin-top: 2rem; }
-    label { display: grid; gap: .45rem; font: 600 1rem system-ui, sans-serif; }
-    input, select, textarea { width: 100%; border: 1px solid #a992a6; border-radius: 3px; padding: .8rem; font: 1rem system-ui, sans-serif; background: white; color: #24182d; }
-    textarea { min-height: 8rem; resize: vertical; }
-    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #ff7189; outline-offset: 2px; }
-    button { width: fit-content; border: 0; padding: .85rem 1.3rem; background: #ff7189; color: #24182d; font: 700 1rem system-ui, sans-serif; cursor: pointer; }
-    button:disabled { opacity: .5; cursor: wait; }
-    #status { min-height: 1.5rem; font: 1rem system-ui, sans-serif; }
-  </style>
+  <link rel="stylesheet" href="/styles.css?v=classic1">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
-  <main>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="/" aria-label="Lopilol Traduções, página inicial"><span class="brand-mark" aria-hidden="true"><img src="/lopilol-preview.png" alt="" width="44" height="44"></span><span class="brand-name">Lopilol Traduções</span></a><nav class="main-nav" aria-label="Navegação principal"><a href="/">Início</a><a href="/#projetos">Projetos</a><a href="/subahibi/">Subahibi</a><a href="/relatar/">Relatar erro</a></nav></div></header>
+  <main class="shell report-main">
     <h1>Encontrou um erro no patch?</h1>
     <p>Conte onde aconteceu e o que apareceu na tela. O relato vai para nossa lista privada de correções no GitHub.</p>
     <form id="report-form">
@@ -54,6 +39,7 @@
       <p id="status" role="status" aria-live="polite"></p>
     </form>
   </main>
+  <footer class="site-footer"><div class="shell footer-inner"><span>© 2026 Lopilol Traduções</span><a href="/">Voltar ao início</a><a href="https://x.com/lopilolbr">@lopilolbr</a></div></footer>
   <script>
     const endpoint = "https://lopilol-private-reports.padapeis3mil.workers.dev";
     const form = document.querySelector("#report-form");
