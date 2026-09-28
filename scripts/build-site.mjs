@@ -27,7 +27,10 @@ export function buildSite(source, destination) {
         mkdirSync(to, { recursive: true });
         copyDirectory(from);
       } else if (entry.isFile() && entry.name.endsWith(".html")) {
-        const html = readFileSync(from, "utf8").replace(OLD_TRACKER, "");
+        let html = readFileSync(from, "utf8").replace(OLD_TRACKER, "");
+        if (!/http-equiv=["']refresh["']/i.test(html)) {
+          if (!html.includes('src="/site-sounds.js')) html = html.replace(/<\/body>/i, '  <script defer src="/site-sounds.js?v=keitai1"></script>\n</body>');
+        }
         if (!/<\/body>/i.test(html)) throw new Error(`Página sem </body>: ${relative(source, from)}`);
         const page = encodeURIComponent(routeFor(relative(source, from)));
         const script = `  <script async src="${TRACKER}?page=${page}"></script>\n`;
@@ -45,3 +48,4 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const source = process.cwd();
   buildSite(source, join(source, "_site"));
 }
+

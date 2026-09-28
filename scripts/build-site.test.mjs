@@ -20,6 +20,7 @@ test("build injects tracking into current and future routes once", () => {
       const html = readFileSync(join(output, relativePath), "utf8");
       assert.equal(html.match(/lopilol-visitor-ips/g)?.length, 1);
       assert.match(html, new RegExp(`visit\\.js\\?page=${page}`));
+      assert.equal(html.match(/site-sounds\.js/g)?.length, 1);
     }
     assert.equal(routeFor("arquivo.html"), "/arquivo.html");
   } finally {
