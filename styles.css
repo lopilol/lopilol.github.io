@@ -78,6 +78,12 @@ a:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
 .card-link:hover { background: #593158; }
 .plain-link { border-bottom: 1px solid currentColor; color: #6d365b; font-size: .85rem; font-weight: 700; }
 .plain-link:hover { color: #a03d64; }
+.project-progress { grid-column: 1 / -1; padding: 16px 27px 19px; border-top: 1px solid var(--line); }
+.project-progress-label { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 9px; color: #493f4c; font-size: .84rem; }
+.project-progress-label strong { color: #68247c; font-size: .9rem; }
+.project-progress-track { height: 9px; overflow: hidden; border-radius: 9px; background: #eaddec; }
+.project-progress-fill { display: block; height: 100%; border-radius: inherit; background: #7a2b8d; }
+.project-progress p { margin: 9px 0 0; color: #6a5d6c; font-size: .76rem; }
 
 .status-section { padding: 24px 0 100px; }
 .status-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
